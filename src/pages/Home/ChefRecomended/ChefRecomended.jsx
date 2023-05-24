@@ -16,8 +16,8 @@ const ChefRecomended = () => {
                     <div className="card-body text-center ">
                         <h2 className="card-title">Soup </h2>
                         <p>Lettuce, Eggs, Parmesan Cheese, Chicken Breast Fillets.</p>
-                        <div className="card-actions justify-end">
-                            <button className="btn btn-primary">Buy Now</button>
+                        <div className="card-actions justify-center">
+                            <button className="btn border-none btn-outline text-orange-800 bg-base-200 ">add to cart</button>
                         </div>
                     </div>
                 </div>
@@ -27,19 +27,19 @@ const ChefRecomended = () => {
                     <div className="card-body text-center">
                         <h2 className="card-title">Cake</h2>
                         <p>Lettuce, Eggs, Parmesan Cheese, Chicken Breast Fillets.</p>
-                        <div className="card-actions justify-end">
-                            <button className="btn btn-primary">Buy Now</button>
+                        <div className="card-actions justify-center">
+                            <button className="btn border-none btn-outline text-orange-800 bg-base-200 ">add to cart</button>
                         </div>
                     </div>
                 </div>
                 {/* card 3 */}
                 <div className="card w-96 bg-base-100 mb-4 shadow-xl">
                     <figure><img src={img3} alt="Shoes" /></figure>
-                    <div className="card-body text-center">
+                    <div className="card-body ">
                         <h2 className="card-title">Pizza</h2>
                         <p>Lettuce, Eggs, Parmesan Cheese, Chicken Breast Fillets.</p>
-                        <div className="card-actions justify-end">
-                            <button className="btn btn-primary">Buy Now</button>
+                        <div className="card-actions justify-center">
+                            <button className="btn border-none btn-outline  text-orange-800 bg-base-200 ">add to cart</button>
                         </div>
                     </div>
                 </div>
