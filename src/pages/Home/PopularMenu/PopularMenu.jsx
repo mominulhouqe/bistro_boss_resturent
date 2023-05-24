@@ -17,7 +17,7 @@ const PopularMenu = () => {
     }, []);
 
     return (
-        <div className='mb-12 font-mono'>
+        <div className='mb-12 p-4 font-mono'>
             <SectionTitile subHeading={"Check it Out"} heading={"From our menu"} />
             <div className='grid md:grid-cols-2 mb-4 gap-10 '>
                 {menu.map(item => (
