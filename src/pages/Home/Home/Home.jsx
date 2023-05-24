@@ -6,6 +6,7 @@ import Features from '../Features/Features';
 import PopularMenu from '../PopularMenu/PopularMenu';
 import ContactUs from '../ContactUs/ContactUs';
 import ChefRecomended from '../ChefRecomended/ChefRecomended';
+import OurMenu from '../OurMenu/OurMenu';
 
 const Home = () => {
     return (
@@ -17,6 +18,7 @@ const Home = () => {
             <PopularMenu />
             <ContactUs />
             <ChefRecomended />
+            <OurMenu />
         </div>
     );
 };

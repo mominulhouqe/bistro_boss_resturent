@@ -9,7 +9,7 @@ const ChefRecomended = () => {
     return (
         <div>
             <SectionTitile subHeading={"Should Try"} heading={"chef Recomends"} />
-            <div className='grid lg:grid-cols-3 md:grid-cols-2  justify-center'>
+            <div className='grid lg:grid-cols-3 md:grid-cols-2 mb-12 justify-center'>
                 {/* card 1 */}
                 <div className="card w-96 bg-base-100 mb-4 shadow-xl">
                     <figure><img src={img1} alt="Shoes" /></figure>
