@@ -5,12 +5,6 @@ import SectionTitile from '../../Shared/SectionTitile/SectionTitile';
 const Features = () => {
     return (
         <div>
-            <SectionTitile 
-            subHeading={"Check it out"}
-            heading={"FROM OUR MENU"}
-            >
-
-            </SectionTitile>
             <div className="hero min-h-screen mb-10" style={{ backgroundImage: `url(${img1})` }}>
                 <div className="hero-overlay bg-opacity-40"></div>
                 <div className="hero-content opacity-95 bg-slate-50 rounded text-center ">
