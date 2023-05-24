@@ -17,7 +17,7 @@ const OurMenu = () => {
                     <button className='btn btn-outline border-0 border-b-4 mt-2'>Order Now</button>
                 </div>
             </div>
-
+ 
         </div>
     );
 };
