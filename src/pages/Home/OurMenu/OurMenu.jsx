@@ -3,25 +3,18 @@ import img1 from '../../../assets/home/featured.jpg'
 import SectionTitile from '../../Shared/SectionTitile/SectionTitile';
 const OurMenu = () => {
     return (
-        <div>
-
+        <div className='mt-8 my-20 bg-fixed' style={{ backgroundImage: `url(${img1})` }}>
             <SectionTitile subHeading={"Check it out"} heading={"From Our Menu"} />
 
 
-            <div className="hero min-h-screen -mt-12" style={{ backgroundImage: `url(${img1})` }}>                <div className="hero-overlay bg-opacity-60"></div>
-
-                <div className="hero-content text-center text-neutral-content">
-
-                    <div className="max-w flex gap-5 justify-center items-center">
-                        <img className='w-1/2 rounded-xl' src={img1} alt="" />
-                        <div>
-                            <h1 className="mb-5 font-semibold">March 20, 2023</h1>
-                            <h1 className="mb-5 font-semibold">WHERE CAN I GET SOME?</h1>
-                            <p className="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                            <button className="btn btn-primary">read more</button>
-                            
-                        </div>
-                    </div>
+            <div  className='md:flex bg-slate-600 opacity-70 text-white justify-center items-center py-20 px-36'>
+                <div>
+                    <img className='rounded-2xl' src={img1} alt="" />
+                </div>
+                <div className='md:ml-10'>
+                    <p>Aug 20, 2029</p>
+                    <p className='uppercase'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vitae voluptatibus minus facilis odit, illo, voluptate sunt, aliquam eos aliquid officia vel alias. Nisi, voluptates adipisci?</p>
+                    <button className='btn btn-outline border-0 border-b-4 mt-2'>Order Now</button>
                 </div>
             </div>
 
