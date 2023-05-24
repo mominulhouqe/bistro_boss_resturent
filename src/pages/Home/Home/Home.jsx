@@ -4,6 +4,7 @@ import Banner from '../Carousel/Banner';
 import Category from '../Categorys/Category';
 import Features from '../Features/Features';
 import PopularMenu from '../PopularMenu/PopularMenu';
+import ContactUs from '../ContactUs/ContactUs';
 
 const Home = () => {
     return (
@@ -13,6 +14,7 @@ const Home = () => {
             <Category />
             <Features />
             <PopularMenu />
+            <ContactUs />
         </div>
     );
 };
