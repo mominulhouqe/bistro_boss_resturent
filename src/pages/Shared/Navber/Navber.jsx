@@ -1,11 +1,19 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Navber = () => {
 
     const menuItems = <>
-        <li><a>Homepage</a></li>
-        <li><a>Portfolio</a></li>
-        <li><a>About</a></li>
+        <li> <Link to='/'> Homepage </Link> </li>
+        <li><Link to ='/menu'>  Our Menu</Link></li>
+        <li> <Link to='/contact'> Contact Us </Link> </li>
+        <li> <Link to='/dashboard'> DashBoard </Link> </li>
+        <li> <Link to='/shop'> Our Shop </Link> </li>
+        <li> <Link to='/addToCart'> Add To cart </Link> </li>
+        <li> <Link to='/login'> Login</Link> </li>
+        <li> <Link to='/logout'> Logout </Link> </li>
+
+      
 
     </>
 
