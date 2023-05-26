@@ -4,12 +4,24 @@ import Cover from '../../Shared/Cover/Cover';
 import shop from "../../../assets/shop/banner2.jpg"
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
+import useMenu from '../../../hooks/useMenu';
+import MenuCard from '../MenuCard/MenuCard';
+import OrderTab from './OrderTab/OrderTab';
 
 
 const OurShop = () => {
 
     const [tabIndex, setTabIndex] = useState(0)
 
+
+
+
+    const [menu] = useMenu();
+    const dessert = menu.filter(item => item.category === 'dessert')
+    const soup = menu.filter(item => item.category === 'soup')
+    const salad = menu.filter(item => item.category === 'salad')
+    const pizza = menu.filter(item => item.category === 'pizza')
+    const offered = menu.filter(item => item.category === 'offered')
 
     return (
         <div>
@@ -19,20 +31,32 @@ const OurShop = () => {
                 <Cover img={shop} title={"OUR SHOP"} description={"Would you like to try a dish? ."} ></Cover>
             </div>
 
-            <Tabs defaultIndex={tabIndex} onSelect={(index) => console.log(index)}>
-                <TabList className="uppercase">
+            <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
+                <TabList className="uppercase mx-auto lg:w-1/2 my-12">
                     <Tab>Salad</Tab>
                     <Tab>Pizza</Tab>
                     <Tab>soups</Tab>
                     <Tab>desserts</Tab>
                     <Tab>Drinks</Tab>
-                 
+
                 </TabList>
+
                 <TabPanel>
-                    title 1
+                   <OrderTab items={salad}></OrderTab>
+
                 </TabPanel>
                 <TabPanel>
-                    thanki
+                <OrderTab items={pizza}></OrderTab>
+                </TabPanel>
+                <TabPanel>
+                
+                <OrderTab items={soup}> </OrderTab>
+                </TabPanel>
+                <TabPanel>
+                <OrderTab items={dessert}></OrderTab>
+                </TabPanel>
+                <TabPanel>
+               <OrderTab items={offered}></OrderTab>
                 </TabPanel>
             </Tabs>
 

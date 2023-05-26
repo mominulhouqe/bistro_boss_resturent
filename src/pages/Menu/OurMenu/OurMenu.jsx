@@ -4,7 +4,7 @@ import img1 from '../../../assets/menu/banner3.jpg'
 import img2 from '../../../assets/menu/pizza-bg.jpg'
 import img3 from '../../../assets/menu/salad-bg.jpg'
 import img4 from '../../../assets/menu/dessert-bg.jpeg'
-
+import Link from "react-router-dom"
 import Cover from '../../Shared/Cover/Cover';
 import useMenu from '../../../hooks/useMenu';
 import MenuCategory from '../MenuCategory/MenuCategory';
@@ -35,6 +35,13 @@ const OurMenu = () => {
                         <MenuCategory key={item._id} item={item} />
                     ))}
                 </div>
+                {/* dessert card */}
+
+                <div className='mx-auto w-1/2 md:w-3/12 text-center my-8'>
+                    <Link to="/order"> <p className='uppercase font-semibold'>ORDER YOUR FAVOURITE FOOD</p></Link>
+                    <div class="border-b-4 border-black rounded-b-lg"></div>
+                </div>
+
                 {/* cover img */}
 
                 <FavoriteFood img={img4} title={"Desserts"} description={"Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium velit vitae doloribus"} button={"order now"}></FavoriteFood>
@@ -49,9 +56,9 @@ const OurMenu = () => {
                         ))}
                     </div>
                 }
-
+                {/*  */}
                 <div className='mx-auto w-1/2 md:w-3/12 text-center my-8'>
-                    <p className='uppercase font-semibold'>ORDER YOUR FAVOURITE FOOD</p>
+                    <Link to="/order"> <p className='uppercase font-semibold'>ORDER YOUR FAVOURITE FOOD</p></Link>
                     <div class="border-b-4 border-black rounded-b-lg"></div>
                 </div>
 
@@ -71,7 +78,7 @@ const OurMenu = () => {
 
                 }
                 <div className='mx-auto w-1/2 md:w-3/12 text-center my-8'>
-                    <p className='uppercase font-semibold'>ORDER YOUR FAVOURITE FOOD</p>
+                    <Link to="/order"> <p className='uppercase font-semibold'>ORDER YOUR FAVOURITE FOOD</p></Link>
                     <div class="border-b-4 border-black rounded-b-lg"></div>
                 </div>
                 {/* cover img 3 */}
@@ -91,7 +98,7 @@ const OurMenu = () => {
 
 
                 <div className='mx-auto w-1/2 md:w-3/12 text-center my-8'>
-                    <p className='uppercase font-semibold'>ORDER YOUR FAVOURITE FOOD</p>
+                    <Link to="/order"> <p className='uppercase font-semibold'>ORDER YOUR FAVOURITE FOOD</p></Link>
                     <div class="border-b-4 border-black rounded-b-lg"></div>
                 </div>
             </div>

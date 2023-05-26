@@ -13,7 +13,7 @@ const MenuCategory = ({item}) => {
                 </div>
                 <p className='text-yellow-500'>{price}</p>
             </div>
-
+            
         </div>
     );
 };
