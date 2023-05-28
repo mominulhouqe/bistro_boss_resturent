@@ -11,14 +11,14 @@ const Navber = () => {
         <li> <Link to='/shop'> Our Shop </Link> </li>
         <li> <Link to='/addToCart'> Add To cart </Link> </li>
         <li> <Link to='/login'> Login</Link> </li>
-        <li> <Link to='/logout'> Logout </Link> </li>
+        <li> <Link to='/login'> Logout </Link> </li>
 
       
 
     </>
 
     return (
-        <div className="navbar bg-opacity-30 text-white bg-black">
+        <div className="navbar fixed z-10 bg-opacity-30 text-white bg-black">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
