@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 
-
 import MenutItem from '../../Shared/MenuItem/MenutItem';
 import SectionTitile from '../../Shared/SectionTitile/SectionTitile';
 import useMenu from '../../../hooks/useMenu';
