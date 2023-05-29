@@ -28,16 +28,24 @@ const OurMenu = () => {
             <Cover img={img1} title={"Our Menu"} description={"This menu Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi."} ></Cover>
             <div className='mb-12 p-4 font-mono'>
                 <SectionTitile subHeading={"Don't Miss"} heading={"Today's Offer"} />
+
+
                 {/* offered menu items */}
-                <div className='grid md:grid-cols-2 mb-12 gap-10  '>
+                {/* <div className='grid md:grid-cols-2 mb-12 gap-10  '>
                     {offered.map(item => (
                         <MenuCategory key={item._id} item={item} />
                     ))}
-                </div>
+                </div> */}
+
+                {/* offered items new added */}
+                {offered.map(item => (
+                    <MenuCategory key={item._id} item={item} />
+                ))}
+
                 {/* dessert card */}
 
                 <div className='mx-auto w-1/2 md:w-3/12 text-center my-8'>
-                   <p className='uppercase font-semibold'>ORDER YOUR FAVOURITE FOOD</p>
+                    <p className='uppercase font-semibold'>ORDER YOUR FAVOURITE FOOD</p>
                     <div className="border-b-4 border-black rounded-b-lg"></div>
                 </div>
 
@@ -57,7 +65,7 @@ const OurMenu = () => {
                 }
                 {/*  */}
                 <div className='mx-auto w-1/2 md:w-3/12 text-center my-8'>
-                   <p className='uppercase font-semibold'>ORDER YOUR FAVOURITE FOOD</p>
+                    <p className='uppercase font-semibold'>ORDER YOUR FAVOURITE FOOD</p>
                     <div className="border-b-4 border-black rounded-b-lg"></div>
                 </div>
 
@@ -77,7 +85,7 @@ const OurMenu = () => {
 
                 }
                 <div className='mx-auto w-1/2 md:w-3/12 text-center my-8'>
-                  <p className='uppercase font-semibold'>ORDER YOUR FAVOURITE FOOD</p>
+                    <p className='uppercase font-semibold'>ORDER YOUR FAVOURITE FOOD</p>
                     <div className="border-b-4 border-black rounded-b-lg"></div>
                 </div>
                 {/* cover img 3 */}
@@ -95,11 +103,11 @@ const OurMenu = () => {
                     </div>
                 }
 
-
+                {/* 
                 <div className='mx-auto w-1/2 md:w-3/12 text-center my-8'>
                     <p className='uppercase font-semibold'>ORDER YOUR FAVOURITE FOOD</p>
                     <div className="border-b-4 border-black rounded-b-lg"></div>
-                </div>
+                </div> */}
             </div>
         </div>
     );

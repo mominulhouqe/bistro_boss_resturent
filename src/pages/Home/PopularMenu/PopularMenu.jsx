@@ -5,10 +5,10 @@ import SectionTitile from '../../Shared/SectionTitile/SectionTitile';
 import useMenu from '../../../hooks/useMenu';
 
 const PopularMenu = () => {
- const [menu] = useMenu();
-const popular = menu.filter(item => item.category === 'popular');
+    const [menu] = useMenu();
+    const popular = menu.filter(item => item.category === 'popular');
 
- 
+
 
     return (
         <div className='mb-12 p-4 font-mono'>
@@ -18,10 +18,11 @@ const popular = menu.filter(item => item.category === 'popular');
                     <MenutItem key={item._id} item={item} />
                 ))}
             </div>
-            <div className='mx-auto w-1/2 md:w-2/12 text-center my-8'>
+            {/* <div className='mx-auto w-1/2 md:w-2/12 text-center my-8'>
                 <p className='uppercase font-semibold'>view Full menu</p>
                 <div className="border-b-4 border-black rounded-b-lg"></div>
-            </div>
+            </div> */}
+            <button className='btn btn-primary'>view full menu</button>
         </div>
     );
 };

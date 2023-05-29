@@ -3,14 +3,14 @@ import { useEffect, useState } from "react";
 const useMenu = () => {
 
     const [menu, setMenu] = useState([]);
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         fetch('https://bristo-boss-server-mominulhouqe.vercel.app/menu')
             .then(res => res.json())
             .then(data => {
-                setLoading(true)
                 setMenu(data)
+                setLoading(false)
             })
     }, []);
 return [menu, loading]
