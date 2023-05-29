@@ -25,7 +25,6 @@ const OurShop = () => {
     const soup = menu.filter(item => item.category === 'soup')
     const salad = menu.filter(item => item.category === 'salad')
     const pizza = menu.filter(item => item.category === 'pizza')
-    const offered = menu.filter(item => item.category === 'offered')
     const drinks = menu.filter(item => item.category === 'drinks');
 
     return (
@@ -61,11 +60,11 @@ const OurShop = () => {
                 <OrderTab items={dessert}></OrderTab>
                 </TabPanel>
                 <TabPanel>
-               <OrderTab items={offered}></OrderTab>
-                </TabPanel>
-                <TabPanel>
                <OrderTab items={drinks}></OrderTab>
                 </TabPanel>
+                {/* <TabPanel>
+               <OrderTab items={drinks}></OrderTab>
+                </TabPanel> */}
             </Tabs>
 
 
