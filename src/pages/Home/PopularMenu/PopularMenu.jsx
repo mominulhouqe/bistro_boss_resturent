@@ -20,7 +20,7 @@ const popular = menu.filter(item => item.category === 'popular');
             </div>
             <div className='mx-auto w-1/2 md:w-2/12 text-center my-8'>
                 <p className='uppercase font-semibold'>view Full menu</p>
-                <div class="border-b-4 border-black rounded-b-lg"></div>
+                <div className="border-b-4 border-black rounded-b-lg"></div>
             </div>
         </div>
     );

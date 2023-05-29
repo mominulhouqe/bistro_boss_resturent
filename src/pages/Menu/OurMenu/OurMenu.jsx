@@ -38,7 +38,7 @@ const OurMenu = () => {
 
                 <div className='mx-auto w-1/2 md:w-3/12 text-center my-8'>
                    <p className='uppercase font-semibold'>ORDER YOUR FAVOURITE FOOD</p>
-                    <div class="border-b-4 border-black rounded-b-lg"></div>
+                    <div className="border-b-4 border-black rounded-b-lg"></div>
                 </div>
 
                 {/* cover img */}
@@ -58,7 +58,7 @@ const OurMenu = () => {
                 {/*  */}
                 <div className='mx-auto w-1/2 md:w-3/12 text-center my-8'>
                    <p className='uppercase font-semibold'>ORDER YOUR FAVOURITE FOOD</p>
-                    <div class="border-b-4 border-black rounded-b-lg"></div>
+                    <div className="border-b-4 border-black rounded-b-lg"></div>
                 </div>
 
                 {/* cover img 2 */}
@@ -78,7 +78,7 @@ const OurMenu = () => {
                 }
                 <div className='mx-auto w-1/2 md:w-3/12 text-center my-8'>
                   <p className='uppercase font-semibold'>ORDER YOUR FAVOURITE FOOD</p>
-                    <div class="border-b-4 border-black rounded-b-lg"></div>
+                    <div className="border-b-4 border-black rounded-b-lg"></div>
                 </div>
                 {/* cover img 3 */}
 
@@ -98,7 +98,7 @@ const OurMenu = () => {
 
                 <div className='mx-auto w-1/2 md:w-3/12 text-center my-8'>
                     <p className='uppercase font-semibold'>ORDER YOUR FAVOURITE FOOD</p>
-                    <div class="border-b-4 border-black rounded-b-lg"></div>
+                    <div className="border-b-4 border-black rounded-b-lg"></div>
                 </div>
             </div>
         </div>
