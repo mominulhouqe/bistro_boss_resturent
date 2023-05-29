@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useForm } from "react-hook-form";
 import { Link } from 'react-router-dom';
@@ -8,9 +8,11 @@ import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, val
 const Login = () => {
 
   const { loggedUser, loginWithPopup } = useContext(AuthContext)
+  const [disable, setDisable] = useState(true)
 
-  
-
+  useEffect(() => {
+    loadCaptchaEnginge(5);
+  }, [])
 
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = data => {
@@ -34,6 +36,18 @@ const Login = () => {
       .catch(error => console.log(error.message))
 
   }
+
+  const handleCaptcha = (e) => {
+
+    const user_captcha_value = e.target.value;
+    if (validateCaptcha(user_captcha_value)) {
+      setDisable(false)
+    }
+    else {
+      setDisable(true)
+    }
+  }
+
 
 
   return (
@@ -74,26 +88,21 @@ const Login = () => {
               {/* captcha validation */}
               <div className="mb-6">
                 <label htmlFor="password" className="block text-gray-700 font-semibold mb-2">
-                  Captha
+                  <LoadCanvasTemplate />
+
                 </label>
-                <input
-                  type="captha"
-                  id="captha"
-                  name="captha"
-                
-                  className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:border-blue-500"
-                  placeholder="Enter your password"
-                  
-                />
+                <input type="text" className='input input-bordered w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:border-blue-500' placeholder='type The captcha' onBlur={handleCaptcha} name="captcha" id="" />
+
               </div>
 
               <div className="flex items-center space-x-2 flex-wrap space-y-5 sm:justify-center   justify-between">
-                <button
+                <button disabled={disable}
                   type="submit"
-                  className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                  className=" btn btn-primary"
                 >
                   Sign In
                 </button>
+                {/* bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline */}
                 <button
                   type="button"
                   onClick={singnInWithGoogle}
