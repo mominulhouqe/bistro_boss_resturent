@@ -6,20 +6,31 @@ import { AuthContext } from '../../provider/AuthProvider';
 
 const Login = () => {
 
-  const {loggedUser} = useContext(AuthContext)
+  const { loggedUser, loginWithPopup } = useContext(AuthContext)
 
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
   const onSubmit = data => {
     console.log(data); // You can perform actions like API calls or state updates here
-loggedUser(data.email, data.password)
-.then(result => {
-  const alreadyLogin = result.user
-  console.log(alreadyLogin);
-})
-.catch(error => console.log(error.message))
-
-
+    loggedUser(data.email, data.password)
+      .then(result => {
+        const alreadyLogin = result.user
+        console.log(alreadyLogin);
+        reset();
+      })
+      .catch(error => console.log(error.message))
   };
+
+
+  const singnInWithGoogle = () => {
+    loginWithPopup()
+      .then(result => {
+        const user = result.user
+        console.log(user)
+      })
+      .catch(error => console.log(error.message))
+
+  }
+
 
   return (
     <div>
@@ -65,7 +76,7 @@ loggedUser(data.email, data.password)
                 </button>
                 <button
                   type="button"
-                  // onClick={handleGooglePopup}
+                  onClick={singnInWithGoogle}
                   className="flex gap-2 items-center btn  hover:bg-red-600  btn-outline  font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                 >
                   Sign In with Google

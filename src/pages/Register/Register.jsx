@@ -6,7 +6,7 @@ import { AuthContext } from '../../provider/AuthProvider';
 
 
 const Register = () => {
-    const { createUser } = useContext(AuthContext);
+    const { createUser, singnInWithGoogle } = useContext(AuthContext);
 
 
     const { register, handleSubmit, reset } = useForm();
@@ -22,6 +22,17 @@ const Register = () => {
 
 
     };
+
+    const handleGooglePopup = () => {
+        singnInWithGoogle()
+        .then(result => {
+            const user = result.user
+            console.log(user);
+        })
+        .catch(error => console.log(error.message))
+    }
+
+
     return (
         <div>
             <div className="flex justify-center  items-center min-h-screen ">
@@ -78,7 +89,7 @@ const Register = () => {
                             </button>
                             <button
                                 type="button"
-                                // onClick={handleGooglePopup}
+                                onClick={handleGooglePopup}
                                 className="flex gap-2  btn-outline  font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                             >
                                 Sign In with Google
