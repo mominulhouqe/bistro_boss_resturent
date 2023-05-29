@@ -9,13 +9,14 @@ const Register = () => {
     const { createUser } = useContext(AuthContext);
 
 
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
         console.log(data); // You can perform actions like API calls or state updates here
-        createUser(email, password)
+        createUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                reset();
             })
             .catch(error => console.log(error.message))
 

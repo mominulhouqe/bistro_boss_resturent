@@ -1,12 +1,24 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useForm } from "react-hook-form";
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../provider/AuthProvider';
 
 const Login = () => {
+
+  const {loggedUser} = useContext(AuthContext)
+
   const { register, handleSubmit } = useForm();
   const onSubmit = data => {
     console.log(data); // You can perform actions like API calls or state updates here
+loggedUser(data.email, data.password)
+.then(result => {
+  const alreadyLogin = result.user
+  console.log(alreadyLogin);
+})
+.catch(error => console.log(error.message))
+
+
   };
 
   return (
