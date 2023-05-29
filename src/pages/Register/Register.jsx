@@ -1,13 +1,25 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from "react-hook-form";
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../provider/AuthProvider';
 
 
 
+const { createUser } = useContext(AuthContext);
 const Register = () => {
+
+
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
-      console.log(data); // You can perform actions like API calls or state updates here
+        console.log(data); // You can perform actions like API calls or state updates here
+        createUser()
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => console.log(error.message))
+
+
     };
     return (
         <div>
@@ -17,7 +29,7 @@ const Register = () => {
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="mb-4">
                             <label htmlFor="email" className="block text-gray-700 font-semibold mb-2">
-                               Name
+                                Name
                             </label>
                             <input
                                 type="name"
@@ -71,9 +83,9 @@ const Register = () => {
                                 Sign In with Google
                             </button>
                         </div>
-                            <p className=''>
-                                Already Have an Account? Please <Link className='text-yellow-500 underline font-semibold' to='/login'>Login</Link>
-                            </p>
+                        <p className=''>
+                            Already Have an Account? Please <Link className='text-yellow-500 underline font-semibold' to='/login'>Login</Link>
+                        </p>
                     </form>
                 </div>
             </div>
