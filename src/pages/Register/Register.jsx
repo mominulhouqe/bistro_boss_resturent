@@ -5,14 +5,14 @@ import { AuthContext } from '../../provider/AuthProvider';
 
 
 
-const { createUser } = useContext(AuthContext);
 const Register = () => {
+    const { createUser } = useContext(AuthContext);
 
 
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
         console.log(data); // You can perform actions like API calls or state updates here
-        createUser()
+        createUser(email, password)
             .then(result => {
                 const user = result.user;
                 console.log(user);

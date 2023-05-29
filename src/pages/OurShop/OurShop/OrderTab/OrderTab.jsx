@@ -7,7 +7,7 @@ const OrderTab = ({ items }) => {
             <div className='grid grid-cols-1 lg:mx-5 lg:grid-cols-3 my-5 gap-5'>
                 {
                     items.map(item => <MenuCard
-                        key={item.id}
+                        key={item._id}
                         item={item}
                     ></MenuCard>)
                 }
