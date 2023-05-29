@@ -7,7 +7,7 @@ import {Link} from 'react-router-dom'
 const MenuCategory = ({ items, img, title }) => {
     // const { name, image, price, recipe } = item
     return (
-        <div>
+        <div className='pt-8'>
 
             {title && <Cover img={img} title={title}></Cover>}
             <div className='grid md:grid-cols-2 mb-4 gap-10 mb-'>
@@ -15,7 +15,7 @@ const MenuCategory = ({ items, img, title }) => {
                     <MenutItem key={item._id} item={item} />
                 ))}
             </div>
-            <Link className='flex justify-center items-center my-4' to={`/order/${title}`}>
+            <Link className='flex justify-center items-center my-4' to={`/shop/${title}`}>
                 <button className='btn  btn-outline border-0 border-b-4 mt-4'>Order Now</button>
             </Link>
 
