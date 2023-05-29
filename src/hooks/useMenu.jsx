@@ -6,7 +6,7 @@ const useMenu = () => {
     const [loading, setLoading] = useState(false)
 
     useEffect(() => {
-        fetch('http://localhost:5000/menu')
+        fetch('https://bristo-boss-server-mominulhouqe.vercel.app/menu')
             .then(res => res.json())
             .then(data => {
                 setLoading(true)

@@ -18,7 +18,7 @@ const Testimonials = () => {
     const [swips, setSwips] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/reviews')
+        fetch('https://bristo-boss-server-mominulhouqe.vercel.app/reviews')
             .then(res => res.json())
             .then(data => setSwips(data))
     }, [])
