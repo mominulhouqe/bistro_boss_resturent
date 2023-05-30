@@ -1,7 +1,7 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import Swal from 'sweetalert2';
@@ -9,6 +9,8 @@ import Swal from 'sweetalert2';
 const Login = () => {
   const { loggedUser, loginWithPopup } = useContext(AuthContext);
   const [disable, setDisable] = useState(true);
+  const navigate = useNavigate();
+  const location = location.state?.from?.pathname || '/';
 
   useEffect(() => {
     loadCaptchaEnginge(5);

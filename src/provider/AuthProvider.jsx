@@ -44,6 +44,7 @@ const AuthProvider = ({ children }) => {
 
     const authInfo = {
         user,
+        loading,
         logOut,
         loggedUser,
         loginWithPopup,
