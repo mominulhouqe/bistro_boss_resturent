@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 const MenuCard = ({ item }) => {
-    const { name, image, price, recipe } = item;
+    const { _id, name, image, price, recipe } = item;
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
@@ -12,12 +12,14 @@ const MenuCard = ({ item }) => {
     const handleToCart = (item) => {
         console.log(item);
 
-        if (user) {
+        if (user && user.email) {
+            const orderItem = { menuItemId: _id, name, image, price, email: user.email };
             fetch('http://localhost:5000/carts', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
+                body: JSON.stringify(orderItem),
             })
                 .then((res) => res.json())
                 .then((data) => {

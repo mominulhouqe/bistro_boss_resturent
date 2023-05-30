@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../provider/AuthProvider';
 import { FaBeer, FaShoppingCart } from "react-icons/fa";
@@ -13,6 +13,9 @@ const Navber = () => {
             })
             .catch(error => console.log(error.message))
     }
+
+
+    
 
     const menuItems = <>
         <li> <Link to='/'> Homepage </Link> </li>
