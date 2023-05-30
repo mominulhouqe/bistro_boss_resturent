@@ -40,7 +40,7 @@ const OurMenu = () => {
                 </div> */}
 
                 {/* offered items new added */}
-                <MenuCategory items={offered} img={img2} title="Offered"></MenuCategory>
+                <MenuCategory items={offered} img={img2} title="offered"></MenuCategory>
 
                 {/* pazza menu items */}
                 <MenuCategory items={pizza} title="pizza" img={img3}></MenuCategory>

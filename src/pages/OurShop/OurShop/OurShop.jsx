@@ -14,7 +14,7 @@ const OurShop = () => {
 
     const categories = ['salad', 'pizza', 'soup', 'dessert', 'drink']
 
-    const {category} = useParams();
+    const { category } = useParams();
     const initialIndex = categories.indexOf(category);
 
     const [tabIndex, setTabIndex] = useState(initialIndex)
@@ -26,6 +26,7 @@ const OurShop = () => {
     const salad = menu.filter(item => item.category === 'salad')
     const pizza = menu.filter(item => item.category === 'pizza')
     const drinks = menu.filter(item => item.category === 'drinks');
+    const offered = menu.filter(item => item.category === 'offered');
 
     return (
         <div>
@@ -42,25 +43,28 @@ const OurShop = () => {
                     <Tab>soups</Tab>
                     <Tab>desserts</Tab>
                     <Tab>Drinks</Tab>
-
+                    <Tab>Offered</Tab>
                 </TabList>
 
                 <TabPanel>
-                   <OrderTab items={salad}></OrderTab>
+                    <OrderTab items={salad}></OrderTab>
 
                 </TabPanel>
                 <TabPanel>
-                <OrderTab items={pizza}></OrderTab>
+                    <OrderTab items={pizza}></OrderTab>
+                </TabPanel>
+             
+                <TabPanel>
+                    <OrderTab items={soup}> </OrderTab>
                 </TabPanel>
                 <TabPanel>
-                
-                <OrderTab items={soup}> </OrderTab>
+                    <OrderTab items={dessert}></OrderTab>
                 </TabPanel>
                 <TabPanel>
-                <OrderTab items={dessert}></OrderTab>
+                    <OrderTab items={drinks}></OrderTab>
                 </TabPanel>
                 <TabPanel>
-               <OrderTab items={drinks}></OrderTab>
+                    <OrderTab items={offered}></OrderTab>
                 </TabPanel>
                 {/* <TabPanel>
                <OrderTab items={drinks}></OrderTab>
