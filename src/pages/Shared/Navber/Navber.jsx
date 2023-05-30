@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../provider/AuthProvider';
-
+import { FaBeer, FaShoppingCart } from "react-icons/fa";
 const Navber = () => {
     const { user, logOut } = useContext(AuthContext)
 
@@ -21,7 +21,12 @@ const Navber = () => {
         <li> <Link to='/dashboard'> DashBoard </Link> </li>
         <li> <Link to='/shop'> Our Shop </Link> </li>
         <li> <Link to='/addToCart'> Add To cart </Link> </li>
-
+       <li>
+       <Link className="bg-slate-900 justify-center flex gap-2">
+            <FaShoppingCart className='text-3xl' />
+            <div className="badge badge-secondary"> 0</div>
+        </Link>
+       </li>
         {
             user ? <>
                 {user.email}
