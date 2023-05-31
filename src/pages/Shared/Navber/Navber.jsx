@@ -6,7 +6,7 @@ import useCart from '../../../hooks/useCart';
 const Navber = () => {
     const { user, logOut } = useContext(AuthContext)
 
-    const {cart} = useCart();
+    const { cart } = useCart();
 
 
     const handleLogOut = () => {
@@ -18,7 +18,7 @@ const Navber = () => {
     }
 
 
-    
+
 
     const menuItems = <>
         <li> <Link to='/'> Homepage </Link> </li>
@@ -26,13 +26,12 @@ const Navber = () => {
         <li> <Link to='/contact'> Contact Us </Link> </li>
         <li> <Link to='/dashboard'> DashBoard </Link> </li>
         <li> <Link to='/shop'> Our Shop </Link> </li>
-        <li> <Link to='/addToCart'> Add To cart </Link> </li>
-       <li>
-       <Link className="bg-slate-900 justify-center flex gap-2">
-            <FaShoppingCart className='text-3xl' />
-            <div className="badge badge-secondary"> + {cart.length || 0}</div>
-        </Link>
-       </li>
+        <li>
+            <Link to='/dashboard/mycart' className="bg-slate-900 justify-center flex gap-2">
+                <FaShoppingCart className='text-3xl' />
+                <div className="badge badge-secondary"> + {cart.length || 0}</div>
+            </Link>
+        </li>
         {
             user ? <>
                 {user.email}
