@@ -2,8 +2,11 @@ import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../provider/AuthProvider';
 import { FaBeer, FaShoppingCart } from "react-icons/fa";
+import useCart from '../../../hooks/useCart';
 const Navber = () => {
     const { user, logOut } = useContext(AuthContext)
+
+    const {cart} = useCart();
 
 
     const handleLogOut = () => {
@@ -27,7 +30,7 @@ const Navber = () => {
        <li>
        <Link className="bg-slate-900 justify-center flex gap-2">
             <FaShoppingCart className='text-3xl' />
-            <div className="badge badge-secondary"> 0</div>
+            <div className="badge badge-secondary"> + {cart.length || 0}</div>
         </Link>
        </li>
         {
