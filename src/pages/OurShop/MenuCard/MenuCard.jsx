@@ -17,7 +17,7 @@ const MenuCard = ({ item }) => {
 
         if (user && user.email) {
             const orderItem = { menuItemId: _id, name, image, price, email: user.email };
-            fetch('http://localhost:5000/carts', {
+            fetch('https://bristo-boss-server-mominulhouqe.vercel.app/carts', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
