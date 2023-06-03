@@ -64,11 +64,8 @@ const Login = () => {
         )
           .then(res => res.json())
           .then(data => {
-            if (data.insertedId) {
-
-
-              
-               console.log(user);
+            if (data) {
+             
                 Swal.fire({
                   icon: 'success',
                   title: 'Signed in with Google successfully!',

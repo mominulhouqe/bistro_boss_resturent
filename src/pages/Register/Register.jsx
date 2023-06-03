@@ -58,6 +58,7 @@ const Register = () => {
   const handleGooglePopup = () => {
     loginWithPopup()
       .then((result) => {
+
         const loggedUserg = result.user;
         const saveUser = { name: loggedUserg.displayName, email: loggedUserg.email }
         console.log(saveUser);
@@ -73,28 +74,17 @@ const Register = () => {
         )
           .then(res => res.json())
           .then(data => {
-            if (data.insertedId) {
+            if (data) {
+              Swal.fire({
+                icon: 'success',
+                title: 'Signed in with Google successfully!',
+                showConfirmButton: false,
+                timer: 1500
+              });
 
-              // reset();
-              // Swal.fire({
-              //   position: 'top-end',
-              //   icon: 'success',
-              //   title: 'User created successfully.',
-              //   showConfirmButton: false,
-              //   timer: 1500
-              // });
               navigate(from, { replace: true });
             }
           })
-
-
-        //  console.log(user);
-        //   Swal.fire({
-        //     icon: 'success',
-        //     title: 'Signed in with Google successfully!',
-        //     showConfirmButton: false,
-        //     timer: 1500
-        //   });
 
       })
       .catch((error) => {
