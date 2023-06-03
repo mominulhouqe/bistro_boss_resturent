@@ -3,7 +3,7 @@ import MenuCard from '../../MenuCard/MenuCard';
 
 const OrderTab = ({ items }) => {
     const itemsPerPage = 3; // Number of items to display per page
-    const [currentPage, setCurrentPage] = useState(1);
+    const [currentPage, setCurrentPage] = useState(1); // Set default value to 1
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
     const currentItems = items.slice(indexOfFirstItem, indexOfLastItem);

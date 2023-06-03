@@ -5,8 +5,9 @@ import { AuthContext } from '../../provider/AuthProvider';
 import Swal from 'sweetalert2';
 
 const Register = () => {
-  const { createUser, loginWithPopup,updateUserProfile } = useContext(AuthContext);
+  const { createUser, loginWithPopup, updateUserProfile } = useContext(AuthContext);
   const navigate = useNavigate();
+  const from = location.state?.from?.pathname || '/';
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
     console.log(data); // You can perform actions like API calls or state updates here
@@ -17,35 +18,35 @@ const Register = () => {
         console.log(loggedUser);
         updateUserProfile(data.name, data.photoURL)
           .then(() => {
-        
-            
-            const saveUser = {name:data.name, email:data.email }
-            fetch('http://localhost:5000/users',
-            {
-              method: 'POST',
-              headers: {
-                'content-type': 'application/json'
-              },
-              body:JSON.stringify(saveUser)
-              
-            }
-            )
-            .then(res => res.json())
-            .then(data => {
-              if(data.insertedId){
 
-                reset();
-                Swal.fire({
-                  position: 'top-end',
-                  icon: 'success',
-                  title: 'User created successfully.',
-                  showConfirmButton: false,
-                  timer: 1500
-                });
-                navigate('/login');
+
+            const saveUser = { name: data.name, email: data.email }
+            fetch('http://localhost:5000/users',
+              {
+                method: 'POST',
+                headers: {
+                  'content-type': 'application/json'
+                },
+                body: JSON.stringify(saveUser)
+
               }
-            })
-            
+            )
+              .then(res => res.json())
+              .then(data => {
+                if (data.insertedId) {
+
+                  reset();
+                  Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'User created successfully.',
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+                  navigate('/login');
+                }
+              })
+
 
           })
           .catch(error => console.log(error))
@@ -57,14 +58,44 @@ const Register = () => {
   const handleGooglePopup = () => {
     loginWithPopup()
       .then((result) => {
-        const user = result.user;
-        console.log(user);
-        Swal.fire({
-          icon: 'success',
-          title: 'Signed in with Google successfully!',
-          showConfirmButton: false,
-          timer: 1500
-        });
+        const loggedUserg = result.user;
+        const saveUser = { name: loggedUserg.displayName, email: loggedUserg.email }
+        console.log(saveUser);
+        fetch('http://localhost:5000/users',
+          {
+            method: 'POST',
+            headers: {
+              'content-type': 'application/json'
+            },
+            body: JSON.stringify(saveUser)
+
+          }
+        )
+          .then(res => res.json())
+          .then(data => {
+            if (data.insertedId) {
+
+              // reset();
+              // Swal.fire({
+              //   position: 'top-end',
+              //   icon: 'success',
+              //   title: 'User created successfully.',
+              //   showConfirmButton: false,
+              //   timer: 1500
+              // });
+              navigate(from, { replace: true });
+            }
+          })
+
+
+        //  console.log(user);
+        //   Swal.fire({
+        //     icon: 'success',
+        //     title: 'Signed in with Google successfully!',
+        //     showConfirmButton: false,
+        //     timer: 1500
+        //   });
+
       })
       .catch((error) => {
         console.log(error.message);

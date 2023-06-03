@@ -44,18 +44,43 @@ const Login = () => {
       });
   };
 
+
+// goggle sign in
   const singnInWithGoogle = () => {
     loginWithPopup()
       .then((result) => {
-        const user = result.user;
-        console.log(user);
-        Swal.fire({
-          icon: 'success',
-          title: 'Logged in with Google successfully!',
-          showConfirmButton: false,
-          timer: 1500,
-        });
-        navigate(from, { replace: true });
+        const loggedUserg = result.user;
+        const saveUser = { name: loggedUserg.displayName, email: loggedUserg.email }
+        console.log(saveUser);
+        fetch('http://localhost:5000/users',
+          {
+            method: 'POST',
+            headers: {
+              'content-type': 'application/json'
+            },
+            body: JSON.stringify(saveUser)
+
+          }
+        )
+          .then(res => res.json())
+          .then(data => {
+            if (data.insertedId) {
+
+
+              
+               console.log(user);
+                Swal.fire({
+                  icon: 'success',
+                  title: 'Signed in with Google successfully!',
+                  showConfirmButton: false,
+                  timer: 1500
+                });
+
+              navigate(from, { replace: true });
+            }
+          })
+
+
       })
       .catch((error) => {
         console.log(error.message);
@@ -67,6 +92,9 @@ const Login = () => {
         });
       });
   };
+
+
+
 
   const handleCaptcha = (captchaValue) => {
     if (validateCaptcha(captchaValue)) {
