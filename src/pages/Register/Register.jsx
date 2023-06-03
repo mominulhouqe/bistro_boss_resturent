@@ -18,10 +18,8 @@ const Register = () => {
         console.log(loggedUser);
         updateUserProfile(data.name, data.photoURL)
           .then(() => {
-
-
             const saveUser = { name: data.name, email: data.email }
-            fetch('http://localhost:5000/users',
+            fetch('https://bristo-boss-server-mominulhouqe.vercel.app/menu',
               {
                 method: 'POST',
                 headers: {
@@ -46,30 +44,24 @@ const Register = () => {
                   navigate('/login');
                 }
               })
-
-
           })
           .catch(error => console.log(error))
       })
-
-
   };
 
   const handleGooglePopup = () => {
     loginWithPopup()
       .then((result) => {
-
         const loggedUserg = result.user;
         const saveUser = { name: loggedUserg.displayName, email: loggedUserg.email }
         console.log(saveUser);
-        fetch('http://localhost:5000/users',
+        fetch('https://bristo-boss-server-mominulhouqe.vercel.app/users',
           {
             method: 'POST',
             headers: {
               'content-type': 'application/json'
             },
             body: JSON.stringify(saveUser)
-
           }
         )
           .then(res => res.json())
@@ -81,7 +73,6 @@ const Register = () => {
                 showConfirmButton: false,
                 timer: 1500
               });
-
               navigate(from, { replace: true });
             }
           })

@@ -52,14 +52,13 @@ const Login = () => {
         const loggedUserg = result.user;
         const saveUser = { name: loggedUserg.displayName, email: loggedUserg.email }
         console.log(saveUser);
-        fetch('http://localhost:5000/users',
+        fetch('https://bristo-boss-server-mominulhouqe.vercel.app/users',
           {
             method: 'POST',
             headers: {
               'content-type': 'application/json'
             },
             body: JSON.stringify(saveUser)
-
           }
         )
           .then(res => res.json())
@@ -76,8 +75,6 @@ const Login = () => {
               navigate(from, { replace: true });
             }
           })
-
-
       })
       .catch((error) => {
         console.log(error.message);
@@ -89,9 +86,6 @@ const Login = () => {
         });
       });
   };
-
-
-
 
   const handleCaptcha = (captchaValue) => {
     if (validateCaptcha(captchaValue)) {
