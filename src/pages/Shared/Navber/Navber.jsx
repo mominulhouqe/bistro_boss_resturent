@@ -24,7 +24,6 @@ const Navber = () => {
         <li> <Link to='/'> Homepage </Link> </li>
         <li><Link to='/menu'>  Our Menu</Link></li>
         <li> <Link to='/contact'> Contact Us </Link> </li>
-        <li> <Link to='/dashboard'> DashBoard </Link> </li>
         <li> <Link to='/shop'> Our Shop </Link> </li>
         <li>
             <Link to='/dashboard/mycart' className="bg-slate-900 justify-center flex gap-2">
@@ -34,8 +33,11 @@ const Navber = () => {
         </li>
         {
             user ? <>
-                {user.email}
-                <li> <Link onClick={handleLogOut} to='/login'> Logout </Link> </li>
+                <div className='flex gap-5 justify-center items-center mx-2'>
+                    <img src={user.photoURL} className='rounded-full w-10 h-10' alt="" />
+                    {user.displayName}
+                    <li> <Link onClick={handleLogOut} to='/login'> Logout </Link> </li>
+                </div>
             </>
 
                 : <li> <Link to='/login'> Login</Link> </li>

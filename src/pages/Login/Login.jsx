@@ -127,7 +127,7 @@ const Login = () => {
               </div>
 
               <div className="flex items-center space-x-2 flex-wrap space-y-5 sm:justify-center justify-between">
-                <button disabled={disable} type="submit" className="btn btn-primary">
+                <button disabled={false} type="submit" className="btn btn-primary">
                   Sign In
                 </button>
                 <button

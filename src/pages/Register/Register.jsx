@@ -1,36 +1,57 @@
 import React, { useContext } from 'react';
 import { useForm } from "react-hook-form";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
 import Swal from 'sweetalert2';
 
 const Register = () => {
-  const { createUser, loginWithPopup } = useContext(AuthContext);
-
+  const { createUser, loginWithPopup,updateUserProfile } = useContext(AuthContext);
+  const navigate = useNavigate();
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
     console.log(data); // You can perform actions like API calls or state updates here
+    console.log(data);
     createUser(data.email, data.password)
-      .then((result) => {
-        const user = result.user;
-        console.log(user);
-        reset();
-        Swal.fire({
-          icon: 'success',
-          title: 'Registered successfully!',
-          showConfirmButton: false,
-          timer: 1500
-        });
+      .then(result => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        updateUserProfile(data.name, data.photoURL)
+          .then(() => {
+        
+            
+            const saveUser = {name:data.name, email:data.email }
+            fetch('http://localhost:5000/users',
+            {
+              method: 'POST',
+              headers: {
+                'content-type': 'application/json'
+              },
+              body:JSON.stringify(saveUser)
+              
+            }
+            )
+            .then(res => res.json())
+            .then(data => {
+              if(data.insertedId){
+
+                reset();
+                Swal.fire({
+                  position: 'top-end',
+                  icon: 'success',
+                  title: 'User created successfully.',
+                  showConfirmButton: false,
+                  timer: 1500
+                });
+                navigate('/login');
+              }
+            })
+            
+
+          })
+          .catch(error => console.log(error))
       })
-      .catch((error) => {
-        console.log(error.message);
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'An error occurred while registering!',
-          confirmButtonText: 'Try Again'
-        });
-      });
+
+
   };
 
   const handleGooglePopup = () => {
@@ -62,6 +83,7 @@ const Register = () => {
         <div className="w-full max-w-sm my-20 bg-white shadow-md border rounded-2xl px-10 py-16">
           <h2 className="text-4xl font-bold mb-6  text-center ">Please Register</h2>
           <form onSubmit={handleSubmit(onSubmit)}>
+
             <div className="mb-4">
               <label htmlFor="email" className="block text-gray-700 font-semibold mb-2">
                 Name
@@ -76,6 +98,22 @@ const Register = () => {
                 placeholder="Enter your name"
               />
             </div>
+
+            <div className="mb-4">
+              <label htmlFor="email" className="block text-gray-700 font-semibold mb-2">
+                Photo URL
+              </label>
+              <input
+                type="photoURL"
+                id="photo"
+                name="name"
+                required
+                {...register("photoURL")}
+                className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:border-blue-500"
+                placeholder="Enter your photoURL"
+              />
+            </div>
+
             <div className="mb-4">
               <label htmlFor="email" className="block text-gray-700 font-semibold mb-2">
                 Email Address
