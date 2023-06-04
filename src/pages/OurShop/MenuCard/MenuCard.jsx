@@ -13,8 +13,6 @@ const MenuCard = ({ item }) => {
 
 
     const handleToCart = (item) => {
-        console.log(item);
-
         if (user && user.email) {
             const orderItem = { menuItemId: _id, name, image, price, email: user.email };
             fetch('https://bristo-boss-server-mominulhouqe.vercel.app/carts', {

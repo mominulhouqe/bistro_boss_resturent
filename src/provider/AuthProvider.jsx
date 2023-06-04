@@ -53,7 +53,7 @@ const AuthProvider = ({ children }) => {
                 // Make a post request to the server to retrieve JWT token
                 axios.post('https://bristo-boss-server-mominulhouqe.vercel.app/jwt', { email: currentUser.email })
                     .then((response) => {
-                        console.log(response.data.token);
+        
                         localStorage.setItem('access-token', response.data.token);
                     })
                     .catch((error) => {
