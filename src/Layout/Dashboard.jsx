@@ -3,7 +3,7 @@ import { NavLink, Outlet } from 'react-router-dom';
 import { FaBook, FaCalendar, FaDiceThree, FaHome, FaPhone, FaShoppingBag, FaShoppingBasket, FaShoppingCart, FaThermometerThreeQuarters, FaUser, FaUsers, FaUtensils, FaWallet } from 'react-icons/fa';
 import useCart from '../hooks/useCart';
 const Dashboard = () => {
-    const { cart } = useCart()
+    const [cart] = useCart()
 
     // todo load data the server from to have dynamic data
     const isAdmin = true;

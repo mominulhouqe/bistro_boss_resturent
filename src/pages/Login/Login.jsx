@@ -5,6 +5,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import Swal from 'sweetalert2';
+import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 
 const Login = () => {
   const { loginUser, loginWithPopup } = useContext(AuthContext);
@@ -42,50 +43,50 @@ const Login = () => {
       });
   };
 
-  const signInWithGoogle = () => {
-    loginWithPopup()
-      .then((result) => {
-        const loggedUser = result.user;
-        const saveUser = { name: loggedUser.displayName, email: loggedUser.email };
-        fetch('https://bristo-boss-server-mominulhouqe.vercel.app/users', {
-          method: 'POST',
-          headers: {
-            'content-type': 'application/json',
-          },
-          body: JSON.stringify(saveUser),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            if (data) {
-              Swal.fire({
-                icon: 'success',
-                title: 'Signed in with Google successfully!',
-                showConfirmButton: false,
-                timer: 1500,
-              });
-              navigate(from, { replace: true });
-            }
-          })
-          .catch((error) => {
-            console.log(error.message);
-            Swal.fire({
-              icon: 'error',
-              title: 'Oops...',
-              text: 'An error occurred while logging in with Google!',
-              confirmButtonText: 'Try Again',
-            });
-          });
-      })
-      .catch((error) => {
-        console.log(error.message);
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'An error occurred while logging in with Google!',
-          confirmButtonText: 'Try Again',
-        });
-      });
-  };
+  // const signInWithGoogle = () => {
+  //   loginWithPopup()
+  //     .then((result) => {
+  //       const loggedUser = result.user;
+  //       const saveUser = { name: loggedUser.displayName, email: loggedUser.email };
+  //       fetch('http://localhost:5000/users', {
+  //         method: 'POST',
+  //         headers: {
+  //           'content-type': 'application/json',
+  //         },
+  //         body: JSON.stringify(saveUser),
+  //       })
+  //         .then((res) => res.json())
+  //         .then((data) => {
+  //           if (data) {
+  //             Swal.fire({
+  //               icon: 'success',
+  //               title: 'Signed in with Google successfully!',
+  //               showConfirmButton: false,
+  //               timer: 1500,
+  //             });
+  //             navigate(from, { replace: true });
+  //           }
+  //         })
+  //         .catch((error) => {
+  //           console.log(error.message);
+  //           Swal.fire({
+  //             icon: 'error',
+  //             title: 'Oops...',
+  //             text: 'An error occurred while logging in with Google!',
+  //             confirmButtonText: 'Try Again',
+  //           });
+  //         });
+  //     })
+  //     .catch((error) => {
+  //       console.log(error.message);
+  //       Swal.fire({
+  //         icon: 'error',
+  //         title: 'Oops...',
+  //         text: 'An error occurred while logging in with Google!',
+  //         confirmButtonText: 'Try Again',
+  //       });
+  //     });
+  // };
 
   const handleCaptcha = (captchaValue) => {
     setDisable(!validateCaptcha(captchaValue));
@@ -144,19 +145,11 @@ const Login = () => {
               <button disabled={disable} type="submit" className="btn btn-primary">
                 Sign In
               </button>
-              <button
-                type="button"
-                onClick={signInWithGoogle}
-                className="flex gap-2 items-center btn hover:bg-red-600 btn-outline font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              >
-                Sign In with Google
-              </button>
-              <p className="">
-                Are you new here? Please{' '}
-                <Link className="text-yellow-500 underline font-semibold" to="/register">
-                  Register
-                </Link>
-              </p>
+
+           
+                <p><small>New Here? <Link to="/register">Create an account</Link> </small></p>
+                <SocialLogin></SocialLogin>
+             
             </div>
           </form>
         </div>

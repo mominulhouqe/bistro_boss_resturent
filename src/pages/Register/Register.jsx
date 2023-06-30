@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
 import Swal from 'sweetalert2';
+import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 
 const Register = () => {
   const { createUser, loginWithPopup, updateUserProfile } = useContext(AuthContext);
@@ -18,7 +19,7 @@ const Register = () => {
         updateUserProfile(data.name, data.photoURL)
           .then(() => {
             const saveUser = { name: data.name, email: data.email };
-            fetch('https://bristo-boss-server-mominulhouqe.vercel.app/users', {
+            fetch('http://localhost:5000/users', {
               method: 'POST',
               headers: {
                 'content-type': 'application/json'
@@ -45,42 +46,42 @@ const Register = () => {
       });
   };
 
-  const handleGooglePopup = () => {
-    loginWithPopup()
-      .then((result) => {
-        const loggedUser = result.user;
-        const saveUser = { name: loggedUser.displayName, email: loggedUser.email };
-        fetch('https://bristo-boss-server-mominulhouqe.vercel.app/users', {
-          method: 'POST',
-          headers: {
-            'content-type': 'application/json'
-          },
-          body: JSON.stringify(saveUser)
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            if (data) {
-              Swal.fire({
-                icon: 'success',
-                title: 'Signed in with Google successfully!',
-                showConfirmButton: false,
-                timer: 1500
-              });
-              navigate(from, { replace: true });
-            }
-          })
-          .catch((error) => {
-            console.log(error.message);
-            Swal.fire({
-              icon: 'error',
-              title: 'Oops...',
-              text: 'An error occurred while signing in with Google!',
-              confirmButtonText: 'Try Again'
-            });
-          });
-      })
-      .catch((error) => console.log(error.message));
-  };
+  // const handleGooglePopup = () => {
+  //   loginWithPopup()
+  //     .then((result) => {
+  //       const loggedUser = result.user;
+  //       const saveUser = { name: loggedUser.displayName, email: loggedUser.email };
+  //       fetch('http://localhost:5000/users', {
+  //         method: 'POST',
+  //         headers: {
+  //           'content-type': 'application/json'
+  //         },
+  //         body: JSON.stringify(saveUser)
+  //       })
+  //         .then((res) => res.json())
+  //         .then((data) => {
+  //           if (data) {
+  //             Swal.fire({
+  //               icon: 'success',
+  //               title: 'Signed in with Google successfully!',
+  //               showConfirmButton: false,
+  //               timer: 1500
+  //             });
+  //             navigate(from, { replace: true });
+  //           }
+  //         })
+  //         .catch((error) => {
+  //           console.log(error.message);
+  //           Swal.fire({
+  //             icon: 'error',
+  //             title: 'Oops...',
+  //             text: 'An error occurred while signing in with Google!',
+  //             confirmButtonText: 'Try Again'
+  //           });
+  //         });
+  //     })
+  //     .catch((error) => console.log(error.message));
+  // };
 
   return (
     <div>
@@ -150,20 +151,10 @@ const Register = () => {
               >
                 Sign Up
               </button>
-              <button
-                type="button"
-                onClick={handleGooglePopup}
-                className="flex gap-2 btn-outline font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              >
-                Sign In with Google
-              </button>
+
             </div>
-            <p>
-              Already have an account? Please{' '}
-              <Link className="text-yellow-500 underline font-semibold" to="/login">
-                Login
-              </Link>
-            </p>
+            <p><small>Already have an account <Link to="/login">Login</Link></small></p>
+            <SocialLogin></SocialLogin>
           </form>
         </div>
       </div>
